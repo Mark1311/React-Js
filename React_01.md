@@ -20,6 +20,15 @@ Yeh React ke purane version mein use hote the. Inmein state aur lifecycle method
 
 Ab React mein mostly functional components use kiye ja rahe hain, kyunki React ne Hooks introduce kiye hain jo functional components ko state aur side-effects handle karne mein madad karte hain.
 
+## How React Works?
+
+1. User action perform karta hai.
+2. State ya Data change hota hai.
+3. Virtual DOM update hota hai.
+4. React old aur new Virtual DOM compare karta hai.
+5. Sirf changed elements actual DOM me update hote hain.
+6. UI re-render ho jata hai.
+
 # React JS ke Advantages:-
 
 #### Performance Optimization: 
@@ -64,9 +73,41 @@ React ka diffing algorithm, jo Virtual DOM ka use karta hai, bahut fast hai. Isk
 
 React ka architecture component-based hai, matlab aap UI ko chhote, reusable components mein divide kar sakte hain. Har component apne aap mein independent hota hai aur apne state aur behavior ko manage karta hai.
 
+Example:
+- Header Component
+- Navbar Component
+- Product Component
+- Footer Component
+
 #### Virtual DOM: 
     
 React virtual DOM ka use karta hai, jo ki real DOM ka lightweight version hota hai. Jab bhi koi change hota hai, React pehle virtual DOM mein update karta hai aur phir real DOM ko efficiently update karta hai. Isse performance boost milta hai.
+
+Benefits:
+- Faster Rendering
+- Better Performance
+- Efficient Updates
+
+### Reusable Components
+
+Ek component ko multiple places par use kiya ja sakta hai.
+
+Example:
+
+```jsx
+<Product />
+<Product />
+<Product />
+```
+
+### One-Way Data Flow
+
+Data Parent Component se Child Component me pass hota hai.
+
+Benefits:
+- Easy Debugging
+- Predictable Data Flow
+- Better Maintainability
 
 #### Unidirectional Data Flow: 
     
@@ -80,6 +121,18 @@ React mein JSX ka use hota hai jo HTML aur JavaScript ko combine karta hai. Yeh 
     
 React declarative approach follow karta hai, jisme aap apni UI ko ek description ki tarah define karte hain. Iska matlab hai ki aap simply state aur data ko define karte hain aur React apne aap UI ko update kar deta hai.
 
+```jsx
+function App() {
+  const isLoggedIn = true;
+
+  return (
+    <div>
+      {isLoggedIn ? <h1>Welcome User</h1> : <h1>Please Login</h1>}
+    </div>
+  );
+}
+```
+
 #### React Hooks: 
 
 React ne functional components mein hooks introduce kiye hain, jaise useState, useEffect, useContext, etc. Yeh state aur side effects ko manage karne ke liye use hota hai, aur functional components ko zyada powerful banata hai.
@@ -92,14 +145,106 @@ React Router ek package hai jo single-page applications (SPA) mein routing manag
 
 React Router ek library hai jo React applications me client-side routing ko enable karti hai. Yeh single-page applications me multiple views ko handle karta hai bina page ko reload kiye.
 
-### JSX in React:
+## Advantages of React JS
+
+- Fast Performance
+- Reusable Components
+- Easy Learning Curve
+- Large Community Support
+- SEO Friendly (with frameworks like Next.js)
+- Easy Maintenance
+- Strong Ecosystem
+
+## Real-World Applications Using React
+
+- Facebook
+- Instagram
+- WhatsApp Web
+- Netflix
+- Airbnb
+- Dropbox
+
+# Features of React JS
+
+- Component-Based Architecture
+- Virtual DOM
+- Reusable Components
+- Declarative UI
+- One-Way Data Binding
+- Fast Rendering
+- JSX (JavaScript XML)
+- High Performance
+- Easy State Management
+- Efficient DOM Updates
+- Unidirectional Data Flow
+- Server-Side Rendering (SSR) Support
+- Strong Community Support
+- Easy Integration with Other Libraries
+- Cross-Platform Development Support (React Native)
+- SEO Friendly (with SSR Frameworks like Next.js)
+- Code Reusability
+- Simple Learning Curve
+- Hot Reloading
+- Large Ecosystem
+
+
+# Difference Between Framework and Library
+
+| Feature | Library | Framework |
+|----------|----------|------------|
+| Definition | Library pre-written code ka collection hoti hai jise hum apni requirement ke according use karte hain. | Framework ek complete structure provide karta hai jiske rules aur architecture ko follow karke application develop ki jati hai. |
+| Control | Developer ke paas control hota hai ki kab aur kaise library ko use karna hai. | Framework control apne paas rakhta hai aur decide karta hai ki code kab execute hoga. |
+| Flow of Control | Developer code ko control karta hai. | Framework application flow ko control karta hai. |
+| Inversion of Control | Nahi hota. | Hota hai (Framework calls your code). |
+| Flexibility | Zyada flexible hoti hai. | Kam flexible hoti hai kyunki predefined structure follow karna padta hai. |
+| Learning Curve | Easy hoti hai. | Thodi difficult ho sakti hai. |
+| Usage | Specific functionality provide karti hai. | Complete application development structure provide karta hai. |
+| Example | React, Lodash, jQuery, Axios | Angular, Django, Laravel, Spring Boot |
+
+# Create React Project
+
+React project create karne ke liye sabse recommended command:
+
+```bash
+npm create vite@latest
+```
+
+Ya specific project name ke sath:
+
+```bash
+npm create vite@latest my-react-app
+```
+
+### Installation Steps
+
+```bash
+# Create Project
+npm create vite@latest my-react-app
+
+# Move into Project Folder
+cd my-react-app
+
+# Install Dependencies
+npm install
+
+# Start Development Server
+npm run dev
+```
+
+## Alternative (Old Method)
+
+```bash
+npx create-react-app my-react-app
+```
+
+# JSX in React:
 
 JSX (JavaScript XML) React mein ek syntax extension hai jo JavaScript ko HTML jaise structure mein likhne ki suvidha deta hai. Yeh React mein components ko define karne ke liye use hota hai.
 
 JSX ka main purpose yeh hai ki hum JavaScript aur HTML ko ek hi file mein combine kar sakein, jisse code likhna aur samajhna dono asaan ho jata hai. JSX mein hum HTML tags jaise syntax ka istemal karte hain, lekin yeh JavaScript mein compile hota hai.
 
 
-```python
+```js
 import React from 'react';
 
 function App() {
@@ -111,7 +256,31 @@ function App() {
 }
 
 export default App;
+
+// or example
+
+const element = <h1>Hello React</h1>;
 ```
+
+## Why JSX?
+
+Without JSX:
+
+```jsx
+const element = React.createElement(
+    "h1",
+    null,
+    "Hello React"
+);
+```
+## Features of JSX
+
+- HTML jaisa syntax provide karta hai.
+- Code ko easy to read aur write banata hai.
+- JavaScript expressions support karta hai.
+- React Elements create karta hai.
+- Better developer experience provide karta hai.
+
 
 ##### JSX ke benefits:
 
@@ -192,6 +361,132 @@ Babel JSX ko React.createElement() mein transform karta hai.
 
 React phir is element ko real DOM mein render karta hai.
 
+# JSX Expressions
+
+JSX Expression ka matlab hai **JavaScript Expression ko JSX ke andar use karna**.
+
+React me Curly Braces `{}` ke andar JavaScript expressions likhe jate hain.
+
+## Example
+
+```jsx
+function App() {
+    const name = "Bittu";
+
+    return <h1>Hello {name}</h1>;
+}
+```
+
+### Output
+
+```text
+Hello Bittu
+```
+
+## Common Examples
+
+```jsx
+{10 + 20}
+
+{name}
+
+{name.toUpperCase()}
+
+{isLogin ? "Welcome" : "Login"}
+
+{greet()}
+```
+
+## Note
+
+- JSX me Expressions use kar sakte hain.
+- Expressions hamesha `{}` ke andar likhe jate hain.
+- `if`, `for`, `while` jaise Statements directly JSX me use nahi kar sakte.
+
+# Multiple Elements Render in React
+
+React me ek component se multiple elements render karne ke liye hum mainly 4 tarike use kar sakte hain.
+
+## 1. Array `[]`
+
+```jsx
+function App() {
+    return [
+        <h1 key="1">Heading</h1>,
+        <p key="2">Paragraph</p>
+    ];
+}
+```
+
+> Array use karne par har element ke liye `key` dena zaruri hota hai.
+
+---
+
+## 2. Fragment Shorthand `<> </>`
+
+```jsx
+function App() {
+    return (
+        <>
+            <h1>Heading</h1>
+            <p>Paragraph</p>
+        </>
+    );
+}
+```
+
+> Ye sabse common aur short syntax hai.
+
+---
+
+## 3. Div Wrapper `<div></div>`
+
+```jsx
+function App() {
+    return (
+        <div>
+            <h1>Heading</h1>
+            <p>Paragraph</p>
+        </div>
+    );
+}
+```
+
+> Ye DOM me extra `<div>` create karta hai.
+
+---
+
+## 4. React.Fragment
+
+```jsx
+function App() {
+    return (
+        <React.Fragment>
+            <h1>Heading</h1>
+            <p>Paragraph</p>
+        </React.Fragment>
+    );
+}
+```
+
+Ya Import karke:
+
+```jsx
+import React, { Fragment } from "react";
+
+function App() {
+    return (
+        <Fragment>
+            <h1>Heading</h1>
+            <p>Paragraph</p>
+        </Fragment>
+    );
+}
+```
+
+> Fragment DOM me extra element create nahi karta.
+
+
 # What is component?
 
 React me, component ek JavaScript function ya class hota hai jo UI (User Interface) ka ek part render karta hai. Components ki madad se hum apne UI ko chhote, reusability ke liye manageable hisso me divide kar sakte hain. Har component apna ek independent logic aur design rakhta hai aur jab data change hota hai, toh component apne aap ko re-render kar leta hai.
@@ -217,6 +512,50 @@ class MyComponent extends React.Component {
   }
 }
 ```
+## Features
+
+- Reusable
+- Independent
+- Easy to Maintain
+- Easy to Test
+- Code Reusability
+
+> Aaj kal mostly Functional Components use hote hain.
+
+## Naming Rule
+Component ka naam hamesha **Capital Letter** se start hona chahiye.
+
+✅ Correct
+```jsx
+function Header() {}
+<!-- This is a component not function -->
+```
+
+❌ Incorrect
+```jsx
+function header() {}
+<!-- This is a function, not component. -->
+```
+# Difference Between Functional Component and Function
+
+| Feature | Functional Component | Normal Function |
+|----------|----------|----------|
+| Purpose | React UI render karne ke liye use hota hai | General JavaScript logic ke liye use hota hai |
+| Return Value | JSX return karta hai | Koi bhi value return kar sakta hai |
+| React Rendering | React ise render kar sakta hai | React ise directly render nahi kar sakta |
+| Component Tag | `<Component />` se call hota hai | Normal function call `functionName()` se hota hai |
+| Naming Convention | First letter Capital hona chahiye | Koi bhi valid name ho sakta hai |
+| Hooks Use Kar Sakta Hai | ✅ Haan (`useState`, `useEffect`) | ❌ Nahi |
+| JSX Support | ✅ Haan | ❌ Directly nahi |
+
+## Difference b/w components
+
+| Functional Component | Class Component |
+|----------|----------|
+| JavaScript Function hota hai | ES6 Class hoti hai |
+| Simple aur short syntax | Thoda lengthy syntax |
+| Hooks support karta hai | Lifecycle Methods use karta hai |
+| Modern React me zyada use hota hai | Ab kam use hota hai |
 
 # Advantage of Components:
 
@@ -240,6 +579,7 @@ React ka virtual DOM aur component lifecycle methods ka use karke performance ko
 
 ##### Testing:
 Components ko independently test kiya ja sakta hai. Agar har component apne kaam mein self-contained hai, to unit testing aur integration testing kaafi asaan ho jati hai.
+
 
 # Real DOM vs Virtual DOM:
 
@@ -315,6 +655,295 @@ React pehle virtual DOM mein changes apply karta hai.
 Phir diffing algorithm ko use karte hue, React compare karta hai ke purani aur naye virtual DOM mein kya farq hai.
 
 Sirf wo changes actual DOM mein reflect kiye jaate hain jo necessary hote hain.
+
+# Exports in React
+
+React me components, functions, variables etc. ko dusri files me use karne ke liye **export** kiya jata hai.
+
+## 1. Default Export
+
+Ek file me sirf **1 default export** ho sakta hai.
+
+### Header.jsx
+
+```jsx
+function Header() {
+    return <h1>Header Component</h1>;
+}
+
+export default Header;
+```
+
+### App.jsx
+
+```jsx
+import Header from "./Header";
+
+function App() {
+    return <Header />;
+}
+```
+
+> Import karte waqt naam kuch bhi rakh sakte hain.
+
+```jsx
+import MyHeader from "./Header";
+```
+
+---
+
+## 2. Named Export
+
+Ek file me multiple named exports ho sakte hain.
+
+### Utils.jsx
+
+```jsx
+export function Header() {
+    return <h1>Header</h1>;
+}
+
+export function Footer() {
+    return <h1>Footer</h1>;
+}
+```
+
+### App.jsx
+
+```jsx
+import { Header, Footer } from "./Utils";
+
+function App() {
+    return (
+        <>
+            <Header />
+            <Footer />
+        </>
+    );
+}
+```
+
+> Named export import karte waqt same naam use karna padta hai.
+
+---
+
+## 3. Multiple Exports
+
+Ek hi file se multiple components/functions export kar sakte hain.
+
+### Components.jsx
+
+```jsx
+
+function Data() {
+    return (
+        <>
+          <Header />
+        </>
+    );
+}
+
+export default Data;
+
+export function Header() {
+    return <h1>Header</h1>;
+}
+
+export function Navbar() {
+    return <h1>Navbar</h1>;
+}
+
+export function Footer() {
+    return <h1>Footer</h1>;
+}
+
+export cosnt UserKey = "Bittu@";
+```
+
+### App.jsx
+
+```jsx
+import Data, { Header, Navbar, Footer, UserKey } from "./Components";
+
+function App() {
+    return (
+        <>
+            <Header />
+            <Navbar />
+            <Footer />
+            <UserKey/>
+        </>
+    );
+}
+```
+
+---
+
+## Summary
+
+| Export Type | Syntax | Import Syntax |
+|------------|---------|--------------|
+| Default Export | `export default Header` | `import Header from "./Header"` |
+| Named Export | `export { Header }` | `import { Header } from "./Header"` |
+| Multiple Export | Multiple `export` | `import { Header, Footer } from "./Header"` |
+
+## Important Points
+
+- Ek file me sirf **1 Default Export** ho sakta hai.
+- Ek file me **Multiple Named Exports** ho sakte hain.
+- Named Export import karte waqt `{}` use karte hain.
+- Default Export import karte waqt `{}` use nahi karte.
+
+# ES6 Import and Export
+
+## Named Export
+
+### math.js
+
+```javascript
+export const name = "Bittu";
+
+export function add(a, b) {
+    return a + b;
+}
+```
+
+### app.js
+
+```javascript
+import { name, add } from "./math";
+
+console.log(name);
+console.log(add(10, 20));
+```
+
+---
+
+## Default Export
+
+### math.js
+
+```javascript
+function add(a, b) {
+    return a + b;
+}
+
+export default add;
+```
+
+### app.js
+
+```javascript
+import add from "./math";
+
+console.log(add(10, 20));
+```
+
+---
+
+## Default + Named Export Together
+
+### math.js
+
+```javascript
+export const name = "Bittu";
+
+export const age = 21;
+
+function add(a, b) {
+    return a + b;
+}
+
+export default add;
+```
+
+### app.js
+
+```javascript
+import add, { name, age } from "./math";
+
+console.log(name);
+console.log(age);
+console.log(add(10, 20));
+```
+
+---
+
+## Import Everything
+
+### math.js
+
+```javascript
+export const name = "Bittu";
+
+export const age = 21;
+
+export function add(a, b) {
+    return a + b;
+}
+```
+
+### app.js
+
+```javascript
+import * as data from "./math";
+
+console.log(data.name);
+console.log(data.age);
+console.log(data.add(10, 20));
+```
+
+---
+
+## Summary
+
+| Export Type | Export Syntax | Import Syntax |
+|------------|--------------|--------------|
+| Named Export | `export const name = "Bittu"` | `import { name } from "./math"` |
+| Default Export | `export default add` | `import add from "./math"` |
+| All Import | `export ...` | `import * as data from "./math"` |
+
+### Important
+
+- Named Export → `{}` lagte hain.
+- Default Export → `{}` nahi lagte.
+- Ek file me sirf **1 Default Export** ho sakta hai.
+- Ek file me **multiple Named Exports** ho sakte hain.
+
+# What is Props??
+React me Props (jo ki "Properties" ka short form hai) ek bahut hi important concept hai. Agar aasan shabdon me kahein, to Props ka kaam ek Component se dusre Component me data bhejna hota hai.
+
+## Code me kaise likhte hain?
+### 1. Parent Component (Jo data bhej raha hai)
+Yahan hum Car namak component ko call kar rahe hain aur usme brand aur color naam ke props bhej rahe hain.
+```js
+function App() {
+  return (
+    <div>
+      {/* Humne brand aur color naam ke props bheje */}
+      <Car brand="Ferrari" color="Red" />
+      <Car brand="BMW" color="Black" />
+    </div>
+  );
+}
+```
+### 2. Child Component (Jo data receive kar raha hai)
+Yahan Car component ko ek object milta hai jise hum props kehte hain. Us object ke andar wo saari values hoti hain jo Parent ne bheji thin.
+```js
+function Car(props) {
+  return (
+    <h2 style={{ color: props.color }}>
+      Hi, I am a {props.brand} car!
+    </h2>
+  );
+}
+```
+- Read-Only (Immutable): Component ke andar aap props ki value ko badal nahi sakte. Agar Parent ne brand="BMW" bheja hai, to Child component use badal kar Audi nahi kar sakta. (Agar data badalna ho, to hum State ka use karte hain).
+
+- Unidirectional Data Flow: Data hamesha upar se neeche jaata hai (Parent se Child ki taraf).
+
+- Kuch bhi bhej sakte ho: Props me aap sirf text hi nahi, balki Numbers, Arrays, Objects, Boolean (true/false), aur yahan tak ki poore ke poore Functions bhi bhej sakte ho.
+
 
 #  props and state?
 
@@ -509,9 +1138,9 @@ Waterfall Model SDLC (Software Development Life Cycle) ka ek traditional approac
 
 Waterfall Model ek linear aur sequential approach hai jisme ek phase complete hone ke baad hi agla phase start hota hai. Yeh ek rigid process hai, aur har phase ka apna ek defined output hota hai, jo agle phase ka input ban jaata hai.
 
-### Waterfall Model ke phases ko thoda aur detail mein samajhte hain:
+## Waterfall Model ke phases ko thoda aur detail mein samajhte hain:
 
-#### Requirement Analysis:
+### Requirement Analysis:
 Is phase mein client se milke unki requirements ko samjha jaata hai.
 
 Sabhi functional aur non-functional requirements ko document kiya jaata hai.
@@ -520,7 +1149,7 @@ Yeh phase sabse pehle hota hai aur isme system ki overall functionality ka overv
 
 Requirement clear hone ke baad, kisi bhi changes ki planning future mein mushkil ho sakti hai.
 
-#### System Design:
+### System Design:
 Is phase mein, architecture aur design banaya jaata hai jo requirements ke basis par hota hai.
 
 Do tarah ka design hota hai:
@@ -531,7 +1160,7 @@ Low-Level Design (LLD): Yeh components ke detailed design ko define karta hai, j
 
 Design phase ke output ko developers aur testers use karte hain aage ke phases ke liye.
 
-#### Implementation (Coding):
+### Implementation (Coding):
 Jab design final ho jaata hai, tab actual coding ka kaam start hota hai.
 
 Developers is phase mein code likhte hain jo design document ke according hota hai.
@@ -540,7 +1169,7 @@ Yeh phase typically longest phase hota hai.
 
 Code likhne ke baad, modules ko integrate kiya jaata hai aur testing ki planning hoti hai.
 
-#### Integration and Testing (Verification):
+### Integration and Testing (Verification):
 Jab coding complete hoti hai, tab system ko integrate karke testing start hoti hai.
 
 Testing mein system ki functionality check ki jaati hai ki wo requirements ke according kaam kar raha hai ya nahi.
@@ -549,14 +1178,14 @@ Agar koi bugs ya errors milte hain, toh unhe fix kiya jaata hai. Agar system exp
 
 Yeh phase bugs ko identify karne aur fix karne ka kaam karta hai.
 
-#### Deployment (Installation):
+### Deployment (Installation):
 Jab testing complete ho jaati hai aur system bug-free ho jaata hai, tab system ko deployment ke liye ready kiya jaata hai.
 
 System ko production environment mein install kiya jaata hai taaki end-users isse use kar sakein.
 
 Deployment ke baad, system ko users ko deliver kar diya jaata hai.
 
-#### Maintenance:
+### Maintenance:
 Jab system live ho jaata hai aur users use karna shuru karte hain, tab maintenance phase start hota hai.
 
 Is phase mein system ko regularly update kiya jaata hai, bugs fix kiye jaate hain, aur enhancements kiye jaate hain.
@@ -564,16 +1193,16 @@ Is phase mein system ko regularly update kiya jaata hai, bugs fix kiye jaate hai
 Maintenance ke dauran system ko optimize bhi kiya jaa sakta hai aur naye features bhi add kiye ja sakte hain.
 
 ### Features:-
-##### Sequential Process: 
+#### Sequential Process: 
 Har phase ka ek clear output hota hai, jo agle phase ko input banata hai.
 
-##### Documentation: 
+#### Documentation: 
 Har phase ke completion ke baad extensive documentation banayi jaati hai, jo project ke progress ko track karne mein madad karti hai.
 
-##### Clear Milestones: 
+#### Clear Milestones: 
 Har phase ka apna ek defined milestone hota hai, jisme next phase ke liye input ready hota hai.
 
-##### Rigid Structure: 
+#### Rigid Structure: 
 Waterfall model ka structure kaafi rigid hota hai. Agar aapko development ke dauran requirements mein koi change karna ho, toh wo kaafi mushkil ho sakta hai, kyunki ek phase complete hone ke baad aapko pehle ke phases mein changes karne padte hain.
 
 ### Advantages:-
@@ -1061,3 +1690,609 @@ Two-way Binding: Simplifies UI updates with real-time synchronization.
 In-built Features: Everything is provided out-of-the-box, including HTTP, forms, routing, etc.
 
 Change Detection: Uses Zone.js for monitoring asynchronous tasks, which can affect performance in large apps.
+
+
+# onClick Event in React
+
+## 1. Function Call Without Parameter
+
+```jsx
+function App() {
+
+    const showMessage = () => {
+        alert("Hello React");
+    };
+
+    return (
+        <button onClick={showMessage}>
+            Click Me
+        </button>
+    );
+}
+
+export default App;
+```
+
+> Function ka reference pass kiya gaya hai.
+
+---
+
+## 2. Function Call With Parameter
+
+```jsx
+function App() {
+
+    const showMessage = (name) => {
+        alert(`Hello ${name}`);
+    };
+
+    return (
+        <button onClick={() => showMessage("Bittu")}>
+            Click Me
+        </button>
+    );
+}
+
+export default App;
+```
+
+> Parameter pass karne ke liye Arrow Function use karna padta hai.
+
+---
+
+## 3. Multiple Parameters
+
+```jsx
+function App() {
+
+    const add = (a, b) => {
+        alert(a + b);
+    };
+
+    return (
+        <button onClick={() => add(10, 20)}>
+            Add
+        </button>
+    );
+}
+
+export default App;
+```
+
+---
+
+## ❌ Wrong Way
+
+```jsx
+<button onClick={showMessage("Bittu")}>
+    Click Me
+</button>
+```
+
+> Isme function component render hote hi execute ho jayega.
+
+---
+
+## ✅ Correct Way
+
+```jsx
+<button onClick={() => showMessage("Bittu")}>
+    Click Me
+</button>
+```
+
+## Summary
+
+### Without Parameter
+
+```jsx
+onClick={showMessage}
+```
+
+### With Parameter
+
+```jsx
+onClick={() => showMessage("Bittu")}
+```
+
+### Multiple Parameters
+
+```jsx
+onClick={() => add(10, 20)}
+```
+
+# Template Literals in React
+
+## Introduction
+
+Template Literals JavaScript ka feature hai jisse hum strings ke andar variables aur expressions ko easily use kar sakte hain.
+
+Template Literals me **backticks (` `)** ka use hota hai.
+
+## Syntax
+
+```javascript
+`Text ${variable}`
+```
+
+---
+
+## Example
+
+```jsx
+function App() {
+    const name = "Bittu";
+
+    return <h1>{`Hello ${name}`}</h1>;
+}
+```
+
+### Output
+
+```text
+Hello Bittu
+```
+
+---
+
+## Multiple Variables
+
+```jsx
+function App() {
+    const firstName = "Bittu";
+    const lastName = "Kumar";
+
+    return (
+        <h1>
+            {`Welcome ${firstName} ${lastName}`}
+        </h1>
+    );
+}
+```
+
+### Output
+
+```text
+Welcome Bittu Kumar
+```
+
+---
+
+## Expression Inside Template Literal
+
+```jsx
+function App() {
+    const a = 10;
+    const b = 20;
+
+    return <h1>{`Sum = ${a + b}`}</h1>;
+}
+```
+
+### Output
+
+```text
+Sum = 30
+```
+
+---
+
+## Without Template Literal
+
+```jsx
+const name = "Bittu";
+
+return <h1>{"Hello " + name}</h1>;
+```
+
+---
+
+## With Template Literal
+
+```jsx
+const name = "Bittu";
+
+return <h1>{`Hello ${name}`}</h1>;
+```
+
+> Template Literals zyada readable aur easy hote hain.
+
+## Summary
+
+- Template Literals me backticks `` ` ` `` use hote hain.
+- Variable ya expression ko `${}` ke andar likhte hain.
+- String concatenation ko easy aur readable banate hain.
+
+### Example
+
+```jsx
+{`Hello ${name}`}
+```
+# JSX Attributes
+
+## Introduction
+
+JSX Attributes ka use elements ko additional information ya properties dene ke liye kiya jata hai.
+
+Ye HTML attributes ki tarah hi hote hain, lekin React me kuch attributes ke naam different hote hain.
+
+## Syntax
+
+```jsx
+<tagName attributeName="value" />
+```
+
+## Example
+
+```jsx
+function App() {
+    return (
+        <img
+            src="logo.png"
+            alt="Logo"
+        />
+    );
+}
+```
+## Common JSX Attributes
+
+### className
+
+```jsx
+<h1 className="title">
+    Hello React
+</h1>
+```
+
+> React me `class` ki jagah `className` use hota hai.
+
+---
+
+### id
+
+```jsx
+<h1 id="heading">
+    Welcome
+</h1>
+```
+
+---
+
+### src
+
+```jsx
+<img src="image.jpg" />
+```
+
+---
+
+### alt
+
+```jsx
+<img
+    src="image.jpg"
+    alt="Profile"
+/>
+```
+
+---
+
+### href
+
+```jsx
+<a href="https://google.com">
+    Google
+</a>
+```
+
+---
+
+### style
+
+```jsx
+<h1 style={{ color: "red" }}>
+    Hello React
+</h1>
+```
+
+> Style object ke form me diya jata hai.
+
+---
+
+## Dynamic Attribute
+
+```jsx
+function App() {
+    const imageUrl = "logo.png";
+
+    return <img src={imageUrl} />;
+}
+```
+
+## Summary
+
+- JSX Attributes element ko additional information dete hain.
+- HTML attributes ki tarah use hote hain.
+- `class` ki jagah `className` use hota hai.
+- Dynamic values ke liye `{}` use karte hain.
+
+### Example
+
+```jsx
+<h1 className="title">
+    Hello React
+</h1>
+```
+
+# Difference Between HTML Attributes and JSX Attributes
+
+| Feature | HTML Attribute | JSX Attribute |
+|----------|----------|----------|
+| Used In | HTML | React JSX |
+| class Attribute | `class` | `className` |
+| for Attribute | `for` | `htmlFor` |
+| Naming Convention | Mostly lowercase | CamelCase use hota hai |
+| Event Handling | `onclick` | `onClick` |
+| Style Attribute | String ke form me | JavaScript Object ke form me |
+| JavaScript Values | Direct use nahi kar sakte | `{}` ke andar use kar sakte hain |
+
+## Examples
+
+### class vs className
+
+#### HTML
+
+```html
+<h1 class="title">Hello</h1>
+```
+
+#### JSX
+
+```jsx
+<h1 className="title">Hello</h1>
+```
+
+---
+
+### for vs htmlFor
+
+#### HTML
+
+```html
+<label for="name">Name</label>
+```
+
+#### JSX
+
+```jsx
+<label htmlFor="name">Name</label>
+```
+
+---
+
+### onclick vs onClick
+
+#### HTML
+
+```html
+<button onclick="showMessage()">
+    Click Me
+</button>
+```
+
+#### JSX
+
+```jsx
+<button onClick={showMessage}>
+    Click Me
+</button>
+```
+
+---
+
+### style
+
+#### HTML
+
+```html
+<h1 style="color:red;">
+    Hello
+</h1>
+```
+
+#### JSX
+
+```jsx
+<h1 style={{ color: "red" }}>
+    Hello
+</h1>
+```
+
+---
+
+### Dynamic Value
+
+#### HTML
+
+```html
+<img src="image.jpg">
+```
+
+#### JSX
+
+```jsx
+<img src={imageUrl} />
+```
+
+## Summary
+
+| HTML | JSX |
+|--------|--------|
+| `class` | `className` |
+| `for` | `htmlFor` |
+| `onclick` | `onClick` |
+| Style String | Style Object |
+| No JS Expressions | JS Expressions Allowed (`{}`) |
+
+# CSS in React
+
+React me CSS ko mainly **3 tariko se** use kiya jata hai:
+
+1. External CSS
+2. Internal CSS
+3. Inline CSS
+
+---
+
+# 1. External CSS
+
+CSS ko alag `.css` file me likha jata hai aur component me import kiya jata hai.
+
+## App.css
+
+```css
+.title {
+    color: red;
+    font-size: 30px;
+}
+```
+
+## App.jsx
+
+```jsx
+import "./App.css";
+
+function App() {
+    return (
+        <h1 className="title">
+            Hello React
+        </h1>
+    );
+}
+
+export default App;
+```
+
+---
+
+# 2. Internal CSS
+
+CSS ko component ke andar object bana kar use karte hain.
+
+## App.jsx
+
+```jsx
+function App() {
+
+    const headingStyle = {
+        color: "blue",
+        fontSize: "30px"
+    };
+
+    return (
+        <h1 style={headingStyle}>
+            Hello React
+        </h1>
+    );
+}
+
+export default App;
+```
+
+---
+
+# 3. Inline CSS
+
+CSS directly element ke `style` attribute me likhte hain.
+
+## App.jsx
+
+```jsx
+function App() {
+    return (
+        <h1
+            style={{
+                color: "green",
+                fontSize: "30px"
+            }}
+        >
+            Hello React
+        </h1>
+    );
+}
+
+export default App;
+```
+
+---
+
+# Summary
+
+| CSS Type | Example |
+|-----------|----------|
+| External CSS | `import "./App.css"` |
+| Internal CSS | `const styleObj = {}` |
+| Inline CSS | `style={{ color: "red" }}` |
+
+## Most Common
+
+✅ External CSS
+
+```jsx
+import "./App.css";
+```
+
+## Internal CSS
+
+```jsx
+const styleObj = {
+    color: "blue"
+};
+```
+
+## Inline CSS
+
+```jsx
+style={{ color: "red" }}
+```
+# tenury operated
+Kyunki React ke JSX ke andar hum direct if-else nahi likh sakte, isliye Ternary Operator React me conditional rendering (yaani condition ke hisab se kuch dikhane ya chhupane) ka sabse pasandida tareeka hai.
+
+`$$\text{Condition} \ ? \ \text{Agar True ho to yeh chalao} \ : \ \text{Agar False ho to yeh chalao}$$`
+
+### React me iske Use-Cases
+```js
+// JSX ke andar Content badalne ke liye
+function LoginButton({ isLoggedIn }) {
+  return (
+    <button>
+      {/* Agar isLoggedIn true hai to 'Logout' dikhega, nahi to 'Login' */}
+      {isLoggedIn ? 'Logout' : 'Login'}
+    </button>
+  );
+}
+```
+```js
+// Poora ka poora Component badalne ke liye
+function Dashboard({ isAdmin }) {
+  return (
+    <div>
+      <h1>Welcome to Dashboard</h1>
+      
+      {/* Agar isAdmin true hai to AdminPanel dikhao, nahi to UserPanel */}
+      {isAdmin ? <AdminPanel /> : <UserPanel />}
+    </div>
+  );
+}
+```
+```js
+// Dynamic CSS Classes lagane ke liye
+function Notification({ isError }) {
+  return (
+    // Agar isError true hai to background red hoga, nahi to green
+    <div className={`alert ${isError ? 'bg-red' : 'bg-green'}`}>
+      Message sent successfully!
+    </div>
+  );
+}
+```

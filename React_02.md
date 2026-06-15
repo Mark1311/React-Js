@@ -191,7 +191,7 @@ export default Counter;
 
 # UseNavigate Hook's
 
-useNavigate hook React Router v6 mein introduced hua hai. Ye hook aapko programmatically navigation (routing) karne ki suvidha deta hai. Iska use aap React components ke andar kar sakte hain, jab aapko user ko ek route se dusre route par le jana ho bina traditional <a> tag ya Link component ke.
+useNavigate hook React Router v6 mein introduced hua hai. Ye hook aapko programmatically navigation (routing) karne ki suvidha deta hai. Iska use aap React components ke andar kar sakte hain, jab aapko user ko ek route se dusre route par le jana ho bina traditional </a> tag ya Link component ke.
 
 Jab aap useNavigate ko call karte hain, ye aapko ek navigate function deta hai, jo aapko specific route par navigate karne mein help karta hai.
 
@@ -796,3 +796,22 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+
+# Template Literals
+Template literals ko likhne ke liye hum backticks (`) ka use karte hain (jo aapke keyboard par Esc key ke thik neeche hota hai), aur iske andar variables ya expressions daalne ke liye ${variable} ka use karte hain.
+
+```js
+// JSX ke andar hamesha { } ke andar backticks lagate hain
+<h1>{`Hello, ${user.name}! Welcome back.`}</h1>
+```
+```js
+useEffect(() => {
+  const userId = 123;
+  // URL me dynamic ID pass karne ke liye
+  fetch(`https://api.example.com/users/${userId}`)
+    .then(res => res.json())
+    .then(data => console.log(data));
+}, []);
+```
+> JSX ke andar jab bhi aapko template literal use karna ho, to use hamesha curly braces { } ke andar likhein, jaise: { ${myVariable} }.
+

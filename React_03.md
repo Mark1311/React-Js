@@ -1,6 +1,5 @@
 # What is the difference between functional and class components?
 
-
 ### Syntax aur Structure:
 
 Functional Components:
@@ -149,7 +148,6 @@ Class Components:
 * Lekin agar legacy code handle karna ho ya lifecycle methods ko specific tarike se use karna ho, toh class components ka knowledge zaroori hai.
 
 # What is prop drilling?
-
 
 Prop Drilling ek concept hai React mein, jisme ek component ko data (props) pass karte hue multiple intermediate components ke through jana padta hai, even agar un beech ke components ko woh data directly use karne ki zarurat na ho.
 
@@ -346,8 +344,6 @@ Uncontrolled Components:
 
 # How do you apply conditional class names?
 
-
-
 ```python
 //  Using Ternary Operator
 
@@ -383,8 +379,6 @@ function TemplateLiteralExample({ isHighlighted }) {
     </p>
   );
 }
-
-
 ```
 
 | **Method**             | **Advantages**                          | **Disadvantages**                     |
@@ -1127,7 +1121,7 @@ Jab props rarely change hote hain.
 
 Jab performance optimization required ho.
 
-#  ▪️ Pure Components
+#  Pure Components
 
 
 Pure Component React ka ek special type ka class-based component hai jo sirf tabhi re-render hota hai jab uska state ya props change hota hai. Yeh performance optimize karne ke liye shallow comparison ka use karta hai, jisme previous aur current props/state ko compare kiya jata hai. Agar koi change nahi hota, toh re-render avoid hota hai.
@@ -1306,3 +1300,136 @@ Unused code ko automatically remove karta hai, jo final bundle size reduce karta
 5. Plugins Aur Loaders:
 
 Webpack ko customize karne ke liye plugins aur loaders ka use hota hai, jisme CSS, images, aur transpiling ke liye specific tools integrate hote hain.
+
+# dependencies vs devDependencies
+
+| Feature | dependencies | devDependencies |
+|----------|-------------|----------------|
+| Use | Production me bhi required hoti hain | Sirf Development ke time required hoti hain |
+| Install Command | `npm install package-name` | `npm install -D package-name` |
+| Production Build | ✅ Install hoti hain | ❌ Install nahi hoti |
+| Example | React, React DOM, Axios | Vite, ESLint, Prettier |
+
+## dependencies Example
+
+```bash
+npm install axios
+```
+
+```json
+{
+  "dependencies": {
+    "axios": "^1.0.0"
+  }
+}
+```
+
+> App chalane ke liye required hai.
+
+---
+
+## devDependencies Example
+
+```bash
+npm install -D eslint
+```
+
+```json
+{
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}
+```
+
+> Sirf development ke liye required hai.
+
+## Summary
+
+- `dependencies` → Application run karne ke liye zaruri packages.
+- `devDependencies` → Development tools wale packages.
+
+# Variable vs State
+
+| Feature / Khoobi | React State (`useState`) | Normal Variable (`let`, `const`) |
+| :--- | :--- | :--- |
+| **Component Re-rendering** | Jab bhi state ki value badalti hai, React component automatically **re-render** hota hai aur screen par naya data dikhta hai. | Variable ki value badalne par component **re-render nahi hota** aur screen par purani value hi dikhti rehti hai. |
+| **Data Persistence (Data ka tikna)** | Re-render hone ke baad bhi state apni purani value ko **yaad rakhta hai** (data loss nahi hota). | Har naye re-render par variable **re-initialize (reset)** ho jata hai, jis se uski badli hui value khoti (loss) jati hai. |
+| **Value Update Karne Ka Tarika** | Isse direct update nahi kar sakte. Iske liye `setState` function (jaise `setCount`) ka use karna padta hai. <br>`setCount(5)` | Isse aap normal assignment operator (`=`) se direct update kar sakte hain. <br>`count = 5` |
+| **Asynchronous Nature** | State updates **asynchronous** hote hain, yaani value turant agli hi line me update nahi hoti, thoda waqt leti hai. | Variable updates **synchronous** hote hain, value turant agli hi line me update ho jati hai. |
+| **Main Purpose (Upyog)** | Iska use tab kiya jata hai jab hume koi aisa data store karna ho jo screen/UI par dynamic badlav dikhaye (e.g., Counter, Form Input, Dark Mode toggle). | Iska use temporary calculations, loops, ya static data (jo kabhi nahi badlega) ko store karne ke liye kiya jata hai. |
+
+
+# React Version Numbers (0.0.0) Ka Matlab
+
+React aur dusre packages **Semantic Versioning (SemVer)** follow karte hain.
+
+Format:
+
+```text
+MAJOR.MINOR.PATCH
+```
+
+Example:
+
+```text
+19.1.0
+│  │  │
+│  │  └── PATCH
+│  └───── MINOR
+└──────── MAJOR
+```
+
+---
+
+## 1. MAJOR Version
+
+Example:
+
+```text
+18.0.0 → 19.0.0
+```
+
+### Matlab
+
+- Bade Changes
+- Breaking Changes ho sakte hain
+- Purana code break ho sakta hai
+
+Example:
+
+```text
+React 18 → React 19
+```
+
+---
+
+## 2. MINOR Version
+
+Example:
+
+```text
+19.0.0 → 19.1.0
+```
+
+### Matlab
+
+- New Features Add Hui
+- Purana Code Normally Chalega
+- Breaking Changes Nahi Hoti
+
+---
+
+## 3. PATCH Version
+
+Example:
+
+```text
+19.1.0 → 19.1.1
+```
+
+### Matlab
+
+- Bug Fixes
+- Security Fixes
+- Performance Improvements
