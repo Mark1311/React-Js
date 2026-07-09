@@ -1004,11 +1004,6 @@ State: State component ke liye local hoti hai aur dusre components mein reuse na
 | **Usage**     | Data share karna             | Data track/update karna    |
 | **Control**   | Parent ke control mein       | Component ke control mein  |
 
-
-# What is Hooks?
-
-React me hooks ek special function hote hain jo functional components me state aur lifecycle features ko manage karne me madad karte hain. React hooks ko version 16.8 me introduce kiya gaya tha, jisse functional components me class components jaise features use kiye ja sakte hain.
-
 # higher-order component
 
 Higher-Order Component (HOC) React mein ek design pattern hai jo ek function hota hai, jo kisi component ko as an argument accept karta hai aur ek naya component return karta hai. Iska main purpose ek existing component ko enhance karna hota hai bina uske original code ko change kiye. HOC ka use common logic ko share karne ke liye kiya jata hai, jaise authentication check, data fetching, etc.
@@ -1016,15 +1011,46 @@ Higher-Order Component (HOC) React mein ek design pattern hai jo ek function hot
 HOC ek function hai jo ek component ko accept karta hai aur usse wrapped component return karta hai.
 
 
-```python
-const withSomething = (WrappedComponent) => {
-  return class extends React.Component {
-    render() {
-      // Common functionality ya logic add kar sakte hain yaha
-      return <WrappedComponent {...this.props} />;
-    }
+```Jsx
+// HOC function hai jo ek Component ko parameter me leta hai
+function withHello(Component) {
+
+  // HOC ek naya component return karta hai
+  return function NewComponent() {
+    return (
+      <div>
+
+        {/* Extra functionality jo HOC add kar raha hai */}
+        <h2>Hello</h2>
+
+        {/* Original Component ko render kar rahe hain */}
+        <Component />
+
+      </div>
+    );
   };
-};
+}
+
+
+// Ye hamara normal component hai
+function User() {
+  return <h1>Rahul</h1>;
+}
+
+
+// User component ko withHello HOC ke andar pass kiya
+// Aur hume ek naya enhanced component mila
+const EnhancedUser = withHello(User);
+
+
+function App() {
+  return (
+    // Enhanced component ko render kiya
+    <EnhancedUser />
+  );
+}
+
+export default App;
 ```
 
 #### Key points:
@@ -1052,6 +1078,13 @@ Code ko simple aur efficient banaya jata hai.
 
 #### Important Note:
 PureComponent shallow comparison karta hai, isliye agar props ya state me koi complex object (e.g., arrays ya objects) hai, to agar unme internal changes hote hain (jaise array ke elements ya object ke properties), tab bhi component ko re-render kiya jayega. Aise cases me React.memo ya deep comparison ka use karna padta hai
+
+
+| **Feature**      | **Pure Component**               | **Regular Component**             |
+| ---------------- | -------------------------------- | --------------------------------- |
+| **Re-rendering** | Sirf props/state change hone par | Har baar re-render hota hai       |
+| **Comparison**   | Shallow comparison karta hai     | No comparison logic               |
+| **Performance**  | Zyada optimized hai              | Unnecessary renders ho sakte hain |
 
 # Software Development Life Cycle
 
@@ -1229,6 +1262,8 @@ Lengthy Development Cycle
 #### Waterfall Model ka use kab hota hai?
 Waterfall model un projects mein zyada use hota hai jahan requirements clear ho, scope stable ho, aur project ka complexity low ho. Example ke liye, small or simple projects jaise ek fixed software tool ya application jo clearly defined requirements ke saath banani hoti hai, wahan waterfall approach kaafi useful hoti hai.
 
+`Requirement → Planning → Design → Development → Testing → Review/Feedback → Release → Next Sprint`
+
 # Agile Model
 
 Agile model, Software Development Life Cycle (SDLC) ka ek popular approach hai jo software development process ko iterative aur incremental banaata hai. Iska goal hai flexibility aur customer ke feedback ke basis par software ko continuously improve karna. Is model mein, development process ko chhote-chhote cycles ya "sprints" mein divide kiya jaata hai.
@@ -1264,7 +1299,7 @@ useState ko use karne se pehle, React ke functional components mein state ko man
 Jab aap useState hook ka use karte hain, React us state ko track karta hai. Agar aap state ko update karte hain to React ko pata chal jata hai aur wo apne component ko re-render karta hai. Har time jab state update hoti hai, component ko nayi value ke saath dobara render kiya jata hai.
 
 
-```python
+```jsx
 import React, { useState } from 'react';
 
 function Counter() {
@@ -1279,6 +1314,22 @@ function Counter() {
     <div>
       <p>Count: {count}</p>
       <button onClick={handleIncrease}>Increase</button>
+    </div>
+  );
+}
+
+==========================================================
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+
+      <button onClick={() => setCount(count + 1)}>
+        Increase
+      </button>
     </div>
   );
 }
@@ -1443,6 +1494,8 @@ useMemo ek powerful hook hai jo costly computations ko avoid karta hai aur perfo
 
 useRef React ka ek hook hai jo ek mutable reference object ko create karta hai jo component re-renders ke dauran preserve hota hai. Iska main use case DOM elements ko reference dena aur unki values ko track karna hai without causing re-renders.
 
+`useRef React ka ek Hook hai jo kisi **DOM Element** ya **Value** ka reference store karne ke liye use hota hai.
+useRef ki value change hone par component re-render nahi hota.`
 
 ```python
 #Syntax
@@ -1538,6 +1591,13 @@ Yahan, previousTimeRef useRef se banaya gaya hai aur usme previous time value st
 * Ye state ki tarah kaam karta hai, lekin ref me update hone par component re-render nahi hota.
 * State ko track kar sakte ho bina component ko re-render kiye.
 
+- `useRef` DOM element ya value ka reference store karta hai.
+- Value `current` property me store hoti hai.
+- `useRef` value change hone par component re-render nahi hota.
+- Input focus, DOM access aur previous values store karne ke liye commonly use hota hai.
+- UI update karni ho to `useState` use karo.
+- Re-render ke bina value store karni ho to `useRef` use karo.
+
 useRef() reactJs interview mai puch le toh ab easily samjha dena interviewer ko
 
 useRef ek React hook hai jo humein allows karta hai ki hum kisi component mein ek persistent value ko store kar sake, jo render hone ke bawajood change nahi hota.
@@ -1573,6 +1633,16 @@ function MyComponent() {
 ```
 
 `Explanation: inputRef ke through aap direct input field ko access karte ho aur button click karte hi input ko focus karte ho. Yeh inputRef.current ke through hota hai.`
+
+### useRef vs useState
+
+| Feature | useRef | useState |
+|----------|----------|----------|
+| Re-render | ❌ No | ✅ Yes |
+| DOM Access | ✅ Yes | ❌ No |
+| Value Store | ✅ Yes | ✅ Yes |
+| UI Update | ❌ No | ✅ Yes |
+| Mutable Value | ✅ Yes | ❌ No |
 
 # What is conditional rendering in React?
 

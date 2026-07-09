@@ -229,6 +229,7 @@ function GrandChild() {
 
 
 # What is the difference between controlled and uncontrolled components?
+`React me Controlled aur Uncontrolled Components forms/input fields ko handle karne ke 2 tarike hain.`
 
 
 ### 1. Controlled Components
@@ -327,6 +328,22 @@ Cons:
 | **Use Cases**        | Complex forms with validations                    | Simple forms or when direct DOM access is needed |
 | **Example Use**      | `<input value={state} onChange={handleChange} />` | `<input ref={inputRef} />`                       |
 
+### Controlled Component vs Uncontrolled Component
+
+| Feature | Controlled Component | Uncontrolled Component |
+|----------|----------|----------|
+| Definition | Input ki value React State se control hoti hai | Input ki value DOM se control hoti hai |
+| Data Store | React State (`useState`) | DOM |
+| Control | React ke paas control hota hai | Browser/DOM ke paas control hota hai |
+| Hook Used | `useState` | `useRef` |
+| Re-render | ✅ Hota hai | ❌ Nahi hota |
+| Value Access | State Variable se | `ref.current.value` se |
+| Validation | Easy | Thodi Difficult |
+| Real-Time Update | ✅ Possible | ❌ Directly Nahi |
+| Code Complexity | Thoda Zyada | Thoda Kam |
+| Performance | Har change par re-render | Re-render nahi hota |
+| Recommended By React | ✅ Haan | Specific Cases me |
+| Best Use Case | Forms, Validation, Dynamic UI | File Input, Simple Forms |
 
 ##### When to Use?
 
@@ -508,6 +525,7 @@ function Toolbar() {
 
 # What are hooks in React?
 
+`React me hooks ek special function hote hain jo functional components me state aur lifecycle features ko manage karne me madad karte hain. React hooks ko version 16.8 me introduce kiya gaya tha, jisse functional components me class components jaise features use kiye ja sakte hain.`
 
 #### Hooks Ki Definition
 * Hooks ek tarika hai jisse functional components me state, lifecycle methods, aur other React features ka use kiya jata hai.
@@ -544,7 +562,7 @@ Summary
 
 * Hooks ne React ke development ko modern aur simpler banaya hai, jo ki cleaner syntax aur better reusability provide karta hai.
 
-# Event Listener
+# Event in React / Event Handler
 
 React mein Event Listener ek function hai jo user ke actions (jaise click, key press, mouse move, etc.) ko detect karta hai aur unke respond mein specific code execute karta hai. Ye React ke event handling system ka ek important part hai.
 
@@ -647,6 +665,8 @@ function MouseEvent() {
 
 
 React Fiber ek React ka underlying reconciliation algorithm hai, jo React applications ke UI rendering aur updates ko manage karne ke liye use hota hai. Fiber ko React 16 se introduce kiya gaya tha, aur iska goal tha React ko fast, smooth, aur modern applications ke liye efficient banana.
+
+`State Change → React re-render → New Virtual DOM representation → Fiber/Reconciliation changes find karta hai → Commit Phase → Real DOM update `
 
 #### React Fiber Kya Hai?
 * React Fiber ek reconciliation engine hai jo UI rendering aur updates ke process ko optimize karta hai.
@@ -801,16 +821,16 @@ function CounterComponent() {
 
 # What are keys in React and why are they important?
 
-
 Keys React me ek unique identifier hote hain jo React ko batate hain ki ek list me kaunsa item change, add, ya remove hua hai. Ye mainly dynamic lists ke liye use hote hain aur React ke reconciliation process me important role play karte hain.
+
+`React me "key" ek special prop hota hai jo list items ko uniquely identify karne ke liye use hota hai. Jab aap kisi list ko render karte ho (jaise map() method se), toh React ko pata hona chahiye ki kaunsa item update hua hai, kaunsa item delete hua hai, ya kaunsa item add hua hai. Isliye key ka use kiya jata hai.`
 
 Keys Kya Hain?
 * Keys ek unique identifier hote hain jo map(), lists, ya dynamic elements ke saath use hote hain.
 
 * Ye React ko efficiently DOM updates karne me madad karte hain by uniquely identifying elements.
 
-
-```python
+```jsx
 const items = ["Apple", "Banana", "Cherry"];
 
 function ItemList() {
@@ -822,6 +842,24 @@ function ItemList() {
     </ul>
   );
 }
+
+const products = [
+  { id: 1, name: 'Laptop', price: 50000 },
+  { id: 2, name: 'Phone', price: 30000 },
+  { id: 3, name: 'Headphones', price: 5000 }
+];
+
+const ProductList = () => {
+  return (
+    <ul>
+      {products.map((product) => (
+        <li key={product.id}>
+          {product.name} - ${product.price}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
 ```
 
@@ -836,8 +874,6 @@ Performance Optimization:
 Avoid UI Bugs:
 * Galat ya missing keys unpredictable behavior ya rendering issues cause kar sakti hain.
 
-
-
 React Keys Ka Importance Reconciliation Mein
 
 React ke Virtual DOM me jab koi update hota hai, toh React changes ko efficiently apply karta hai:
@@ -847,6 +883,15 @@ Keys ke bina:
 
 Keys ke sath:
 * React sirf usi list item ko update karta hai jo badla hai.
+
+#### Key aur Re-rendering:
+React ko jab list me changes dekhna hote hain (jaise item add ya remove ho), toh wo virtual DOM me check karta hai ki kis item ka position change hua hai. Agar key sahi se set ki gayi ho, toh React ko pata chal jata hai ki kis item ko update karna hai, bina poore list ko dobara render kiye. Isse rendering fast hota hai.
+
+#### Key ka Importance:
+Jab aap React me list items render karte hain (jaise map() function se), toh React ko yeh samajhna hota hai ki har item ka unique identity kya hai, taki wo efficiently update kar sake jab state ya props change ho. Agar aap key ka sahi tareeke se use nahi karte, toh React ko har item ko re-render karna padta hai, jo unnecessary performance cost hota hai.
+
+Agar aap key nahi provide karte, toh React default behavior me index ko key samajh kar use karta hai. Lekin yeh problem create kar sakta hai agar aapki list me items ka order change ho, ya items add/remove ho.
+
 
 # How do you optimize performance in a React app?
 
@@ -1120,49 +1165,6 @@ Jab functional components heavy calculations karte ho aur baar-baar render karne
 Jab props rarely change hote hain.
 
 Jab performance optimization required ho.
-
-#  Pure Components
-
-
-Pure Component React ka ek special type ka class-based component hai jo sirf tabhi re-render hota hai jab uska state ya props change hota hai. Yeh performance optimize karne ke liye shallow comparison ka use karta hai, jisme previous aur current props/state ko compare kiya jata hai. Agar koi change nahi hota, toh re-render avoid hota hai.
-
-#### Key Features of Pure Component:
-1. Shallow Comparison:
-
-* Yeh props aur state ka shallow comparison karta hai:
-
-* Agar primitive values (numbers, strings) same hain, toh re-render nahi karega.
-
-* Agar objects/arrays ka reference same hai, toh yeh unko bhi change nahi maanega.
-
-2. Class-Based Component:
-* Pure Component sirf class components mein kaam karta hai.
-
-* Functional components mein iske liye React.memo() ka use hota hai.
-
-3. Performance Optimization:
-
-* Yeh unnecessary renders ko rokh kar app ko fast banata hai.
-
-
-```python
-import React, { PureComponent } from "react";
-
-class MyComponent extends PureComponent {
-  render() {
-    console.log("Rendered");
-    return <div>Hello, {this.props.name}!</div>;
-  }
-}
-
-export default MyComponent;
-```
-
-| **Feature**      | **Pure Component**               | **Regular Component**             |
-| ---------------- | -------------------------------- | --------------------------------- |
-| **Re-rendering** | Sirf props/state change hone par | Har baar re-render hota hai       |
-| **Comparison**   | Shallow comparison karta hai     | No comparison logic               |
-| **Performance**  | Zyada optimized hai              | Unnecessary renders ho sakte hain |
 
 
 # How do you optimize performance in a React app?

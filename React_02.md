@@ -1,5 +1,7 @@
 # Promise:-
 
+`Promise JavaScript me ek object hai jo asynchronous operation ke future result ko represent karta hai. Ye result success (resolve) ya failure (reject) ho sakta hai.`
+
 Imagine aapke paas ek magic lamp hai jisme ek genie (Promise) rehta hai. Ab jab aap us genie ko bulane ki koshish karte ho (promise call karte ho), toh genie turant kaam nahi karta. Genie aapko kehta hai, “Chill karo, mai kaam kar raha hoon, thoda time lagega.”
 
 * Step 1: Promise is called
@@ -18,40 +20,6 @@ Ab genie apna kaam complete karta hai aur ice cream deliver ho jaati hai. Ab yeh
 Jab promise resolved ho jaata hai, event loop check karta hai ki job queue mein koi kaam pending hai kya. Agar kuch hai, toh browser use utha ke execute karta hai. Aapko ice cream mil jaati hai (promise fulfilled), ya phir aapko bataya jaata hai ki ice cream nahi aayi (promise rejected).
 
 
-# Conditional Handeling
-
-Conditional handling in React refers to the practice of rendering different UI elements based on certain conditions. It allows developers to display content dynamically based on a state, props, or any other conditions that change during the app’s lifecycle.
-
-
-```python
-// ##### Using if statements:
-
-function Welcome(props) {
-  if (props.isLoggedIn) {
-    return <h1>Welcome back!</h1>;
-  } else {
-    return <h1>Please sign up.</h1>;
-  }
-}
-
-// ##### Using Ternary Operators:
-
-function Welcome(props) {
-  return (
-    <h1>{props.isLoggedIn ? 'Welcome back!' : 'Please sign up.'}</h1>
-  );
-}
-
-// ##### Using Logical && Operator
-
-function Greeting(props) {
-  return (
-    <div>
-      {props.isLoggedIn && <h1>Welcome back!</h1>}
-    </div>
-  );
-}
-```
 
 # useReducer Hook's
 
@@ -398,36 +366,6 @@ export default App;
 
 Imagine karo tum ek biryani ki recipe bana rahe ho (Provider). Tumhare saare dost (Consumers) tumhare ingredients ka wait kar rahe hain, but instead of individually giving each one the ingredients (prop drilling), tum ek note bana kar sabko ek hi baar broadcast kar dete ho (Context API). Sabko biryani mil gayi!
 
-# Event in React / Event Handler
-
-React mein "event" ek interaction hota hai jo user ne kisi element ke saath perform kiya ho, jaise button click karna, form submit karna, mouse hover karna, ya keyboard key press karna. React events kaafi similar hote hain browser ke native events ke, lekin React mein ye thoda alag tarike se handle hote hain.
-
-React mein events ko handle karne ke liye hum event handler functions ka use karte hain. Ye event handler functions React components ke andar define kiye jaate hain aur unko specific DOM elements ke saath bind kiya jata hai.
-
-#### Simple Example:-
-
-
-```python
-import React, { useState } from 'react';
-
-function App() {
-  const [count, setCount] = useState(0);
-
-  const handleClick = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={handleClick}>Click me</button>
-    </div>
-  );
-}
-
-export default App;
-```
-
 # Component Life Cycle:-
 
 Component Life Cycle React (aur aise hi baaki framework) mein ek process hai jisme ek component apni creation se lekar unmount hone tak kuch stages se guzarta hai. React mein component ka life cycle mainly 3 parts mein divide hota hai: Mounting, Updating, aur Unmounting.
@@ -665,56 +603,6 @@ Single Source of Truth: Saare state ek jagah par rehte hain, jo debugging aur ma
 Predictable: State ko modify karne ka process predictable hota hai, jise aap track kar sakte ho.
 
 Easy Debugging: Aap actions aur state changes ko easily track kar sakte ho, jo development aur debugging me madadgar hai.
-
-# What is Key?
-
-React me "key" ek special prop hota hai jo list items ko uniquely identify karne ke liye use hota hai. Jab aap kisi list ko render karte ho (jaise map() method se), toh React ko pata hona chahiye ki kaunsa item update hua hai, kaunsa item delete hua hai, ya kaunsa item add hua hai. Isliye key ka use kiya jata hai.
-
-React me key ka main purpose performance optimization aur re-rendering ko efficient banana hota hai.
-
-
-```python
-const items = ['Apple', 'Banana', 'Orange'];
-
-const ItemList = () => {
-  return (
-    <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
-  );
-};
-```
-
-#### Key ka Importance:
-Jab aap React me list items render karte hain (jaise map() function se), toh React ko yeh samajhna hota hai ki har item ka unique identity kya hai, taki wo efficiently update kar sake jab state ya props change ho. Agar aap key ka sahi tareeke se use nahi karte, toh React ko har item ko re-render karna padta hai, jo unnecessary performance cost hota hai.
-
-Agar aap key nahi provide karte, toh React default behavior me index ko key samajh kar use karta hai. Lekin yeh problem create kar sakta hai agar aapki list me items ka order change ho, ya items add/remove ho.
-
-#### Key aur Re-rendering:
-React ko jab list me changes dekhna hote hain (jaise item add ya remove ho), toh wo virtual DOM me check karta hai ki kis item ka position change hua hai. Agar key sahi se set ki gayi ho, toh React ko pata chal jata hai ki kis item ko update karna hai, bina poore list ko dobara render kiye. Isse rendering fast hota hai.
-
-
-```python
-const products = [
-  { id: 1, name: 'Laptop', price: 50000 },
-  { id: 2, name: 'Phone', price: 30000 },
-  { id: 3, name: 'Headphones', price: 5000 }
-];
-
-const ProductList = () => {
-  return (
-    <ul>
-      {products.map((product) => (
-        <li key={product.id}>
-          {product.name} - ${product.price}
-        </li>
-      ))}
-    </ul>
-  );
-};
-```
 
 # setState()
 
